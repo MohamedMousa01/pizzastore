@@ -12,7 +12,7 @@ public interface OrdineService {
 
     public Ordine caricaSingoloElemento(Long id);
 
-//    public Ordine caricaSingoloElementoEager(Long id);
+   public Ordine caricaSingoloElementoEager(Long id);
 
     public void aggiorna(Ordine ordineInstance);
 

@@ -10,7 +10,7 @@ public interface ClienteService {
 
     public List<Cliente> listAllElements();
 
-    public Cliente caricaSingoloElemento(Long id);
+    public Cliente caricaSingoloCliente(Long id);
 
     public void aggiorna(Cliente clienteInstance);
 
@@ -20,4 +20,7 @@ public interface ClienteService {
 
     public List<Cliente> findByExample(Cliente example);
 
+    public Cliente caricaSingoloElementoEager(Long id);
+
+    public void disattivaCliente(Long id);
 }

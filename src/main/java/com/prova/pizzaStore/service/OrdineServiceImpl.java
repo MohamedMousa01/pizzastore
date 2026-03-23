@@ -45,5 +45,10 @@ public class OrdineServiceImpl implements OrdineService{
         return repository.findByExample(example);
     }
 
+    @Override
+    public Ordine caricaSingoloElementoEager(Long id) {
+        return repository.findByIdEager(id);
+    }
+
 
 }

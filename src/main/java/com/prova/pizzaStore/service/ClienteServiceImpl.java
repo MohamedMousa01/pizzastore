@@ -20,7 +20,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Transactional(readOnly = true)
-    public Cliente caricaSingoloElemento(Long id) {
+    public Cliente caricaSingoloCliente(Long id) {
         return repository.findById(id).orElse(null);
     }
 
@@ -44,6 +44,17 @@ public class ClienteServiceImpl implements ClienteService {
         return repository.findByExample(example);
    }
 
+    @Override
+    public Cliente caricaSingoloElementoEager(Long id) {
+        return repository.findClienteEager(id);
+    }
 
+    @Override
+    public void disattivaCliente(Long id){
+        Cliente cliente = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente non trovato"));
+        cliente.setAttivo(false);
+        repository.save(cliente);
+    }
 
 }
