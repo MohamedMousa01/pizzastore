@@ -21,7 +21,7 @@ public class Pizza {
     private String ingredienti;
 
     @Column(name = "prezzo")
-    private float prezzo;
+    private Double prezzo;
 
     @Column(name = "attivo")
     private Boolean attivo;
@@ -32,7 +32,7 @@ public class Pizza {
 
     public Pizza(){}
 
-    public Pizza(Long id, String descrizione, String ingredienti, float prezzo, Boolean attivo, Set<Ordine> ordini) {
+    public Pizza(Long id, String descrizione, String ingredienti, Double prezzo, Boolean attivo, Set<Ordine> ordini) {
         this.id = id;
         this.descrizione = descrizione;
         this.ingredienti = ingredienti;
@@ -65,11 +65,11 @@ public class Pizza {
         this.ingredienti = ingredienti;
     }
 
-    public float getPrezzo() {
+    public Double getPrezzo() {
         return prezzo;
     }
 
-    public void setPrezzo(float prezzo) {
+    public void setPrezzo(Double prezzo) {
         this.prezzo = prezzo;
     }
 

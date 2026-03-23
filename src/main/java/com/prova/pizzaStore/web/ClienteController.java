@@ -28,14 +28,20 @@ public class ClienteController {
         return mv;
     }
 
-//    @PostMapping("/list")
-//    public ModelAndView listClienti(ClienteDTO example) {
-//        ModelAndView mv = new ModelAndView();
-//        List<Cliente> clienti = clienteService.findByExample(example.buildClienteModel());
-//        mv.addObject("cliente_list_attribute", ClienteDTO.createClienteDTOListFromModelList(clienti));
-//        mv.setViewName("cliente/list");
-//        return mv;
-//    }
+    @PostMapping("/list")
+    public ModelAndView listClienti(ClienteDTO example) {
+        ModelAndView mv = new ModelAndView();
+        List<Cliente> clienti = clienteService.findByExample(example.buildClienteModel());
+        mv.addObject("cliente_list_attribute", ClienteDTO.createClienteDTOListFromModelList(clienti));
+        mv.setViewName("cliente/list");
+        return mv;
+    }
+
+    @GetMapping("/search")
+    public String search() {
+        return "cliente/search";
+    }
+
 
 
 

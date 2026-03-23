@@ -15,14 +15,14 @@ public class PizzaDTO {
     private String ingredienti;
 
     @NotNull(message = "{pizza.prezzo.notnull}")
-    private float prezzo;
+    private Double prezzo;
 
     @NotNull(message = "{pizza.attivo.notnull}")
     private Boolean attivo;
 
     public PizzaDTO(){}
 
-    public PizzaDTO(Long id, String descrizione, String ingredienti, float prezzo, Boolean attivo) {
+    public PizzaDTO(Long id, String descrizione, String ingredienti, Double prezzo, Boolean attivo) {
         this.id = id;
         this.descrizione = descrizione;
         this.ingredienti = ingredienti;
@@ -30,7 +30,7 @@ public class PizzaDTO {
         this.attivo = attivo;
     }
 
-    public PizzaDTO(String descrizione, String ingredienti, float prezzo, Boolean attivo) {
+    public PizzaDTO(String descrizione, String ingredienti, Double prezzo, Boolean attivo) {
         this.descrizione = descrizione;
         this.ingredienti = ingredienti;
         this.prezzo = prezzo;
@@ -61,11 +61,11 @@ public class PizzaDTO {
         this.ingredienti = ingredienti;
     }
 
-    public float getPrezzo() {
+    public Double getPrezzo() {
         return prezzo;
     }
 
-    public void setPrezzo(float prezzo) {
+    public void setPrezzo(Double prezzo) {
         this.prezzo = prezzo;
     }
 

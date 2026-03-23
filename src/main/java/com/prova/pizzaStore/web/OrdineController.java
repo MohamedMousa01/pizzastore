@@ -23,22 +23,22 @@ public class OrdineController {
     @Autowired
     OrdineService ordineService;
 
-//    @GetMapping
-//    public ModelAndView listAllOrdini(){
-//        ModelAndView mv = new ModelAndView();
-//        List<Ordine> ordine = ordineService.listAllElements();
-//        mv.addObject("ordine_list_attribute", OrdineDTO.createOrdineDTOListFromModelList(ordine, true));
-//        mv.setViewName("ordine/list");
-//        return mv;
-//    }
-//
-//    @PostMapping("/list")
-//    public ModelAndView listOridni(OrdineDTO example) {
-//        ModelAndView mv = new ModelAndView();
-//        List<Ordine> ordine = ordineService.findByExample(example.buildOrdineFromDTO());
-//        mv.addObject("cliente_list_attribute", OrdineDTO.createOrdineDTOListFromModelList(ordine, true));
-//        mv.setViewName("cliente/list");
-//        return mv;
-//    }
+    @GetMapping
+    public ModelAndView listAllOrdini(){
+        ModelAndView mv = new ModelAndView();
+        List<Ordine> ordine = ordineService.listAllElements();
+        mv.addObject("ordine_list_attribute", OrdineDTO.createOrdineDTOListFromModelList(ordine, true));
+        mv.setViewName("ordine/list");
+        return mv;
+    }
+
+    @PostMapping("/list")
+    public ModelAndView listOridni(OrdineDTO example) {
+        ModelAndView mv = new ModelAndView();
+        List<Ordine> ordine = ordineService.findByExample(example.buildOrdineFromDTO());
+        mv.addObject("cliente_list_attribute", OrdineDTO.createOrdineDTOListFromModelList(ordine, true));
+        mv.setViewName("cliente/list");
+        return mv;
+    }
 
 }

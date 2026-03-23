@@ -39,4 +39,11 @@ public class ClienteServiceImpl implements ClienteService {
         repository.deleteById(idClienteToDelete);
     }
 
+   @Transactional
+    public List<Cliente> findByExample(Cliente example){
+        return repository.findByExample(example);
+   }
+
+
+
 }

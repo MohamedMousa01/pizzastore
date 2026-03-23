@@ -18,6 +18,6 @@ public interface ClienteService {
 
     public void rimuovi(Long idClienteToDelete);
 
-//    public List<Cliente> findByExample(Cliente example);
+    public List<Cliente> findByExample(Cliente example);
 
 }
