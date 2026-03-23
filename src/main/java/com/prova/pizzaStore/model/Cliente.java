@@ -15,7 +15,7 @@ public class Cliente {
     private Long id;
 
     @Column(name = "nome")
-    private String name;
+    private String nome;
 
     @Column(name = "cognome")
     private String cognome;
@@ -31,8 +31,8 @@ public class Cliente {
 
     public Cliente(){};
 
-    public Cliente(String name, String cognome, String indirizzo, Boolean attivo) {
-        this.name = name;
+    public Cliente(String nome, String cognome, String indirizzo, Boolean attivo) {
+        this.nome = nome;
         this.cognome = cognome;
         this.indirizzo = indirizzo;
         this.attivo = attivo;
@@ -46,12 +46,12 @@ public class Cliente {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getCognome() {
@@ -76,5 +76,13 @@ public class Cliente {
 
     public void setAttivo(Boolean attivo) {
         this.attivo = attivo;
+    }
+
+    public Set<Ordine> getOrdini() {
+        return ordini;
+    }
+
+    public void setOrdini(Set<Ordine> ordini) {
+        this.ordini = ordini;
     }
 }

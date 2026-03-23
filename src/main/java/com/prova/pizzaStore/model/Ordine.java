@@ -25,10 +25,11 @@ public class Ordine {
     private String codice;
 
     @Column(name = "costototale")
-    private float costoTotale;
+    private double costoTotale;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id" , nullable = false)
+    private Cliente cliente;
 
     @ManyToMany
     @JoinTable(name = "ordine_pizza", joinColumns = @JoinColumn(name = "ordine_id"), inverseJoinColumns = @JoinColumn(name = "pizza_id"))
@@ -36,7 +37,7 @@ public class Ordine {
 
     public Ordine(){}
 
-    public Ordine(Date dataOrdine, Boolean closed, String codice, float costoTotale, Set<Pizza> pizze) {
+    public Ordine(Date dataOrdine, Boolean closed, String codice, double costoTotale, Set<Pizza> pizze) {
         this.dataOrdine = dataOrdine;
         this.closed = closed;
         this.codice = codice;
@@ -76,11 +77,11 @@ public class Ordine {
         this.codice = codice;
     }
 
-    public float getCostoTotale() {
+    public double getCostoTotale() {
         return costoTotale;
     }
 
-    public void setCostoTotale(float costoTotale) {
+    public void setCostoTotale(double costoTotale) {
         this.costoTotale = costoTotale;
     }
 
@@ -90,5 +91,13 @@ public class Ordine {
 
     public void setPizze(Set<Pizza> pizze) {
         this.pizze = pizze;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }
