@@ -23,10 +23,10 @@ public class CustomPizzaRepositoryImpl implements CustomPizzaRepository{
         Map<String, Object> paramaterMap = new HashMap<String, Object>();
         List<String> whereClauses = new ArrayList<String>();
 
-        StringBuilder queryBuilder = new StringBuilder("select p from Pizza o where p.id = op.id ");
+        StringBuilder queryBuilder = new StringBuilder("select p from Pizza p where p.id = p.id ");
 
         if(StringUtils.isNoneBlank(example.getDescrizione())){
-            whereClauses.add(" o.descrizione = :descrizione");
+            whereClauses.add(" p.descrizione = :descrizione");
             paramaterMap.put("descrizione", example.getDescrizione());
         }
         if(StringUtils.isNotEmpty(example.getIngredienti())){
@@ -38,7 +38,7 @@ public class CustomPizzaRepositoryImpl implements CustomPizzaRepository{
             paramaterMap.put("attivo", "%" + example.getAttivo() + "%");
         }
         if (example.getPrezzo() != null) {
-            whereClauses.add(" o.prezzo =:prezzo ");
+            whereClauses.add(" p.prezzo =:prezzo ");
             paramaterMap.put("prezzo", example.getPrezzo());
         }
 

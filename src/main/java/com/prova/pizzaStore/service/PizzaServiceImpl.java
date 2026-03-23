@@ -46,4 +46,24 @@ public class PizzaServiceImpl implements PizzaService {
         return repository.findByExample(example);
     }
 
+    @Override
+    @Transactional
+    public Pizza caricaSingoloPizza(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public void disattivaPizza(Long id) {
+        Pizza pizza = repository.findById(id).orElseThrow(() -> new RuntimeException("Pizza non trovata"));
+        pizza.setAttivo(false);
+        repository.save(pizza);
+    }
+
+    @Override
+    public Pizza caricaSingoloElementoEager(Long id) {
+        return null;
+    }
+
+
 }

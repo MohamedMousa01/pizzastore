@@ -22,4 +22,6 @@ public interface OrdineService {
 
     public List<Ordine> findByExample(Ordine example);
 
+    public double calcolaPrezzoOrdine(Long idOrdine);
+
 }

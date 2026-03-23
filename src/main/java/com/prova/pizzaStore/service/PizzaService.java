@@ -22,4 +22,10 @@ public interface PizzaService {
     public void rimuovi(Long idPizzaToDelete);
 
     public List<Pizza> findByExample(Pizza example);
+
+    public Pizza caricaSingoloPizza(Long id);
+
+    public void disattivaPizza(Long id);
+
+    public Pizza caricaSingoloElementoEager(Long id);
 }

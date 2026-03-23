@@ -2,6 +2,7 @@ package com.prova.pizzaStore.service;
 
 import com.prova.pizzaStore.model.Cliente;
 import com.prova.pizzaStore.model.Ordine;
+import com.prova.pizzaStore.model.Pizza;
 import com.prova.pizzaStore.repository.ordine.OrdineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,5 +51,19 @@ public class OrdineServiceImpl implements OrdineService{
         return repository.findByIdEager(id);
     }
 
-
+    @Override
+    public double calcolaPrezzoOrdine(Long idOrdine) {
+        Ordine ordine = repository.findByIdEager(idOrdine);
+        double result = 0.0;
+        if(ordine == null || ordine.getPizze() == null || ordine.getPizze().isEmpty()){
+            throw new RuntimeException("Questo ordine non esiste o non ci sono pizze ordinate.");
+        }
+        for(Pizza pizza: ordine.getPizze()){
+            result += pizza.getPrezzo();
+        }
+        result *= 1.15;
+        ordine.setCostoTotale(result);
+        repository.save(ordine);
+        return result;
+    }
 }

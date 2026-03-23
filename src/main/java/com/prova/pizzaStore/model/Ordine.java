@@ -100,4 +100,14 @@ public class Ordine {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public void addPizza(Pizza pizza){
+        this.pizze.add(pizza);
+        pizza.getOrdini().add(this);
+    }
+
+    public void removePizza(Pizza pizza){
+        this.pizze.remove(pizza);
+        pizza.getOrdini().remove(this);
+    }
 }

@@ -3,6 +3,9 @@ package com.prova.pizzaStore.dto;
 import com.prova.pizzaStore.model.Pizza;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class PizzaDTO {
 
@@ -17,8 +20,10 @@ public class PizzaDTO {
     @NotNull(message = "{pizza.prezzo.notnull}")
     private Double prezzo;
 
-    @NotNull(message = "{pizza.attivo.notnull}")
     private Boolean attivo;
+
+
+
 
     public PizzaDTO(){}
 
@@ -80,4 +85,24 @@ public class PizzaDTO {
     public static PizzaDTO buildPizzaDTOFromModel(Pizza pizza){
         return new PizzaDTO(pizza.getId(), pizza.getDescrizione(), pizza.getIngredienti(), pizza.getPrezzo(), pizza.getAttivo());
     }
+
+    public static List<PizzaDTO> createPizzaDTOListFromModelList(List<Pizza> listInput){
+        return listInput.stream().map(pizzaEntity ->{
+            return PizzaDTO.buildPizzaDTOFromModel(pizzaEntity);
+        }).collect(Collectors.toList());
+    }
+
+    public Pizza buildModelFromDTO(){
+        Pizza pizza = new Pizza();
+        pizza.setId(this.id);
+        pizza.setDescrizione(this.descrizione);
+        pizza.setAttivo(this.attivo);
+        pizza.setPrezzo(this.prezzo);
+        pizza.setIngredienti(this.ingredienti);
+        return pizza;
+    }
+
 }
+
+
+
