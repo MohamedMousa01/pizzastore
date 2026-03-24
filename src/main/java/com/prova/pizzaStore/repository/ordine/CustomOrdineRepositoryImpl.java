@@ -7,6 +7,7 @@ import jakarta.persistence.TypedQuery;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -51,5 +52,28 @@ public class CustomOrdineRepositoryImpl implements CustomOrdineRepository{
         }
 
         return typedQuery.getResultList();
+    }
+
+
+    @Override
+    public List<Ordine> findByDataOrdineBetween(LocalDateTime dataInizio, LocalDateTime dataFine) {
+
+        StringBuilder queryBuilder = new StringBuilder("select o from Ordine o where o.id = o.id ");
+        Map<String, Object> paramMap = new HashMap<>();
+
+        if (dataInizio != null) {
+            queryBuilder.append(" and o.dataOrdine >= :dataInizio ");
+            paramMap.put("dataInizio", dataInizio);
+        }
+
+        if (dataFine != null) {
+            queryBuilder.append(" and o.dataOrdine <= :dataFine ");
+            paramMap.put("dataFine", dataFine);
+        }
+
+        TypedQuery<Ordine> query = entityManager.createQuery(queryBuilder.toString(), Ordine.class);
+        paramMap.forEach(query::setParameter);
+
+        return query.getResultList();
     }
 }

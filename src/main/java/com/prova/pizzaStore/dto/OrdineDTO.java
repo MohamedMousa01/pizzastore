@@ -14,13 +14,13 @@ public class OrdineDTO {
     @NotNull(message = "{ordine.dataordine.notnull}")
     private Date dataOrdine;
 
-    @NotNull(message = "{ordine.closed.notnull}")
+
     private Boolean closed;
 
     @NotNull(message = "{ordine.costoTotale.notnull}")
     private Double costoTotale;
 
-    @NotNull(message = "{ordine.codice.notnull}")
+
     private String codice;
 
     @NotNull(message = "{ordine.clienteDTO.notnull}")

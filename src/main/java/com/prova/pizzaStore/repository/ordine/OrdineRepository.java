@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public interface OrdineRepository extends CrudRepository<Ordine, Long>, CustomOrdineRepository{
@@ -14,4 +16,5 @@ public interface OrdineRepository extends CrudRepository<Ordine, Long>, CustomOr
 
     @Query("select o from Ordine o left join fetch o.cliente left join fetch o.pizze where o.id = :id")
     Ordine findByIdEager(@Param("id") Long id);
+
 }

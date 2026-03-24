@@ -104,6 +104,7 @@ public class PizzaController {
 
     @GetMapping("/show/{idPizza}")
     public String showPizza(@PathVariable(required = true) Long idPizza, Model model) {
+
         model.addAttribute("show_pizza_attr",
               PizzaDTO.buildPizzaDTOFromModel(pizzaService.caricaSingoloPizza(idPizza)));
         return "pizza/show";
